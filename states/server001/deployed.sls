@@ -8,7 +8,7 @@
 # firewall-cmd --add-port={4505/tcp,4506/tcp}
 # firewall-cmd --add-port={4505/tcp,4506/tcp} --permanent
 
-# vim /etc/salt/master.d/stratus.conf
+# vim /etc/salt/minion.d/stratus.conf
     # [root@lvtjd1001 salt]# cat /etc/salt/master.d/stratus.conf
     # use_superseded:
     #   - module.run
@@ -25,11 +25,10 @@
 
 
 # hostnamectl set-hostname lvtjd1001.jd1.demeron.com
-show off module.run with args:
+Change the hostname:
   module.run:
-    - test.random_hash:
-      - size: 42
-      - hash_type: sha256
+    - network.mod_hostname:
+      - hostname: lvtjd1001.jd1.demeron.com
 
 # dnf update -y
 Update all packages:
