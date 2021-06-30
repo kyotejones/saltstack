@@ -25,10 +25,11 @@
 
 
 # hostnamectl set-hostname lvtjd1001.jd1.demeron.com
-Update the hostname:
+show off module.run with args:
   module.run:
-    - network.mod_hostname:
-      - hostname: lvtjd1001.jd1.demeron.com
+    - test.random_hash:
+      - size: 42
+      - hash_type: sha256
 
 # dnf update -y
 Update all packages:
