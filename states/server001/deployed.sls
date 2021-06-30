@@ -25,7 +25,7 @@
 
 
 # hostnamectl set-hostname lvtjd1001.jd1.demeron.com
-network.mod_hostname:
+Update the hostname:
   module.run:
     - network.mod_hostname:
       - hostname: lvtjd1001.jd1.demeron.com
