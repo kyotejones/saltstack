@@ -27,10 +27,13 @@
 
 
 # hostnamectl set-hostname lvtjd1001.jd1.demeron.com
+{% set strTest = "lvtjd1001.jd1.demeron.com" %}
 Change the hostname:
   module.run:
     - network.mod_hostname:
-      - hostname: lvtjd1001.jd1.demeron.com
+      - hostname: {{strTest}}
+    - unless:
+      - hostnamectl | grep {{strTest}}
 
 # dnf update -y
 Update all packages:
@@ -41,10 +44,6 @@ Update all packages:
 PIP Install setproctitle:
   pip.installed:
     - name: setproctitle
-
-PIP Install pygit2:
-  pip.installed:
-    - name: pygit2
 
 # dnf install httpd
 Install Apache:
@@ -74,7 +73,9 @@ Create folders:
     - group: root
     - dir_mode: 755
     - makedirs: True
-
+    
 Deploy an empty webpage:
   file.touch:
     - name: /var/www/html/index.html
+    - unless:
+      - ls -l /var/www/html/index.html
