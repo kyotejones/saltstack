@@ -74,3 +74,7 @@ Create folders:
     - group: root
     - dir_mode: 755
     - makedirs: True
+
+Deploy an empty webpage:
+  file.touch:
+    - name: /var/www/html/index.html
