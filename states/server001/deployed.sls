@@ -1,3 +1,5 @@
+# Manual Steps:
+# 
 # curl -fsSL https://repo.saltproject.io/py3/redhat/8/x86_64/latest.repo | sudo tee /etc/yum.repos.d/salt.repo
 # dnf install salt-master salt-minion
 # systemctl enable salt-master
@@ -49,6 +51,20 @@ Install Apache:
   pkg.installed:
     - pkgs:
       - httpd
+
+# systemctl enable httpd
+# systemctl start httpd
+Start and Enable HTTP Service:
+  service.running:
+    - name: httpd
+    - enable: True
+
+Open the Apache ports:
+  firewalld.present:
+    - name: public
+    - services:
+      - http
+      - https
 
 # mkdir /var/www/html/files
 Create folders:
