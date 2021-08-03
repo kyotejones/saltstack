@@ -29,7 +29,8 @@
 
 
 # hostnamectl set-hostname lvtjd1001.jd1.demeron.com
-{% set strTest = "lvtjd1001.jd1.demeron.com" %}
+# Set the hostname to whatever you want
+{% set strTest = "server001.gla.demeron.com" %}
 Change the hostname:
   module.run:
     - network.mod_hostname:
