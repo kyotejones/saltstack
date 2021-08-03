@@ -20,10 +20,12 @@
 # vim /etc/salt/master.d/stratus.conf
     # fileserver_backend:
     #   - gitfs
+    #   - roots
     # gitfs_remotes:
     #   - https://github.com/kyotejones/saltstack:
     #     - root: states
 # systemctl restart salt-master
+# systemctl restart salt-minion
 
 
 # hostnamectl set-hostname lvtjd1001.jd1.demeron.com
@@ -46,10 +48,14 @@ PIP Install setproctitle:
     - name: setproctitle
 
 # dnf install httpd
-Install Apache:
+Install packages:
   pkg.installed:
     - pkgs:
       - httpd
+      - bash-completion
+      - wget
+      - tmux
+      - vim
 
 # systemctl enable httpd
 # systemctl start httpd
